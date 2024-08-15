@@ -23,8 +23,9 @@ public class Program {
 
 		for (int i = 1; i <= quantity; i++) {
 			System.out.println("Tax payer #" + i + " data:");
-			System.out.print("Individual or Company (i / c)?");
+			System.out.print("Individual or Company (i / c)? ");
 			char taxPayerType = sc.next().charAt(0);
+			sc.nextLine();
 			System.out.print("Name: ");
 			String name = sc.nextLine();
 			System.out.print("Anual income: ");
@@ -51,8 +52,8 @@ public class Program {
 		System.out.println("\nTAXES PAID: ");
 		double taxSum = 0;
 		for (TaxPayer payer : taxPayer) {
-			System.out.println(payer.getName() + ", $" + payer.tax());
-			taxSum += payer.tax();
+			System.out.println(payer.getName() + ", $" + String.format("%.2f", payer.tax()));
+			taxSum = taxSum + payer.tax();
 		}
 		System.out.println("\nTOTAL TAXES: $" + taxSum);
 		

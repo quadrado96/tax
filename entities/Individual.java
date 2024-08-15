@@ -3,11 +3,11 @@ package entities;
 public class Individual extends TaxPayer {
 
 	private Double healthExpenditures;
-	
+
 	public Individual() {
 		super();
 	}
-	
+
 	public Individual(String name, Double anualIncome, Double healthExpenditures) {
 		super(name, anualIncome);
 		this.healthExpenditures = healthExpenditures;
@@ -19,19 +19,11 @@ public class Individual extends TaxPayer {
 
 	@Override
 	public double tax() {
-		double taxPercentage = 0;
 		if (getAnualIncome() < 20000) {
-			taxPercentage = 0.15;
+			return getAnualIncome() * 0.15 - healthExpenditures * 0.5;
+		} else {
+			return getAnualIncome() * 0.25 - healthExpenditures * 0.5;
 		}
-		if (getAnualIncome() >= 20000) {
-			taxPercentage = 0.25;
-		}
-		if (getHealthExpenditures() > 0) {
-			healthExpenditures = healthExpenditures / 2;
-		}
-		return (getAnualIncome() * taxPercentage) - healthExpenditures;
-	}
-	
-	
 
+	}
 }
